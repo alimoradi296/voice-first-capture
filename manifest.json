@@ -1,0 +1,10 @@
+{
+	"id": "voice-first-capture",
+	"name": "Voice First Capture",
+	"version": "0.1.0",
+	"minAppVersion": "1.11.4",
+	"description": "Transcribe audio recordings into the note where you recorded them.",
+	"author": "Ali Moradi",
+	"authorUrl": "https://github.com/alimoradi296",
+	"isDesktopOnly": false
+}

@@ -1,0 +1,43 @@
+{
+	"name": "voice-first-capture",
+	"version": "0.1.0",
+	"description": "Transcribe Obsidian audio recordings into the note where they were recorded.",
+	"main": "main.js",
+	"type": "module",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"lint": "eslint .",
+		"test": "node --import tsx --test tests/**/*.test.ts",
+		"version": "node version-bump.mjs && git add manifest.json versions.json"
+	},
+	"keywords": [
+		"obsidian",
+		"audio",
+		"transcription",
+		"voice-notes"
+	],
+	"author": "Ali Moradi",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alimoradi296/voice-first-capture.git"
+	},
+	"bugs": {
+		"url": "https://github.com/alimoradi296/voice-first-capture/issues"
+	},
+	"homepage": "https://github.com/alimoradi296/voice-first-capture#readme",
+	"devDependencies": {
+		"@eslint/js": "^9.39.4",
+		"@types/node": "^22.15.17",
+		"esbuild": "0.25.5",
+		"eslint": "^9.39.4",
+		"eslint-plugin-obsidianmd": "^0.4.0",
+		"globals": "^17.6.0",
+		"jiti": "^2.6.1",
+		"obsidian": "latest",
+		"tsx": "^4.20.6",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.59.1"
+	}
+}
