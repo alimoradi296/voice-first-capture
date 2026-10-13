@@ -1,8 +1,31 @@
 # Voice First Capture
 
-Voice First Capture transcribes an Obsidian audio recording into the note where you recorded it.
+Record a thought in Obsidian. Receive its transcript in the same note.
 
-Record your thought and stop the recorder. The plugin sends the audio to your transcription service. It then adds the raw transcript beside the audio embed.
+The plugin watches new audio recordings, sends audio to your chosen transcription provider, and inserts the returned text beside the audio embed.
+
+**Status:** `0.1.0` beta, installed through BRAT. Requires Obsidian 1.11.4 or later and a compatible transcription API.
+The manifest permits desktop and mobile. Device and provider compatibility still require verification in your environment.
+
+[Install the beta](#install-the-beta-with-brat) · [Try one recording](#try-one-recording) · [Privacy](#privacy) · [Limits](#limits)
+
+## The interaction
+
+```text
+Open a note → record → stop → transcript appears beside the audio
+```
+
+Illustrative note output, with synthetic words and a sample date:
+
+```markdown
+![[Recording 20260101100000.m4a]]
+
+## Voices
+
+<!-- voice-first-capture:Recording%2020260101100000.m4a -->
+> [!quote] Raw transcript — 2026-01-01 10:00
+> Write down the next step before starting the task.
+```
 
 ## Features
 
@@ -13,7 +36,7 @@ Record your thought and stop the recorder. The plugin sends the audio to your tr
 - Support English, Persian, and automatic language detection.
 - Work with OpenAI-compatible transcription services.
 - Store the API key in Obsidian Secret Storage.
-- Run on desktop and mobile.
+- Use the same plugin bundle on desktop and mobile; verify behavior on your device.
 
 ## Privacy
 
@@ -61,13 +84,15 @@ Model: whisper-1
 
 Other providers can use different model names. The provider must implement the OpenAI-compatible `/audio/transcriptions` endpoint.
 
-## Use automatic transcription
+## Try one recording
 
-1. Open a Markdown note.
-2. Start the Obsidian audio recorder.
-3. Speak your note.
-4. Stop the recorder.
-5. Wait for the completion notice.
+1. Complete the installation and configuration steps above.
+2. Open a Markdown note.
+3. Start the Obsidian audio recorder.
+4. Speak a short sentence.
+5. Stop the recorder.
+6. Wait for the completion notice.
+7. Verify that the transcript appears beside the audio embed.
 
 The plugin adds a `## Voices` heading and a raw-transcript callout. You can change the heading in the settings.
 
@@ -82,6 +107,16 @@ You can also select the audio-lines icon in the ribbon.
 ## Supported audio files
 
 The plugin recognizes `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `ogg`, `wav`, and `webm` files. Your provider can support fewer formats.
+
+## Limits
+
+- The beta requires a network connection and a transcription API key.
+- Provider fees, file-size limits, model names, and language accuracy depend on the provider.
+- The plugin stores raw transcription text. It does not summarize or reorganize your note.
+- Duplicate protection uses a marker for the recording filename. Keep that marker to avoid another insertion.
+- If automatic transcription misses a recording, use the manual command in the source note.
+- The automated tests cover Markdown insertion and transcription request construction.
+- These tests do not certify a live transcription provider or every desktop and mobile device.
 
 ## Development
 
